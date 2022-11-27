@@ -86,7 +86,7 @@ def test_groovylint_tool_plugin_scan_valid():
         os.path.join(os.path.dirname(__file__), "valid_package", "test.groovy"),
     ]
     print("Starting plugin_scan_validE", flush=True)
-    print(f"name: {plugin.get_name()}")
+    print(f"name: {plugin.get_name()} package: {package}")
     print("Starting plugin_scan_validF", flush=True)
     issues = plugin.scan(package, "level")
     print("Starting plugin_scan_validG", flush=True)
