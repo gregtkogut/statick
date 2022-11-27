@@ -2,7 +2,6 @@
 import argparse
 import os
 import subprocess
-import sys
 
 import mock
 import pytest
@@ -69,6 +68,7 @@ def test_groovylint_tool_plugin_found():
 
 def test_groovylint_tool_plugin_scan_valid():
     """Integration test: Make sure the groovylint output hasn't changed."""
+    print("Starting plugin_scan_valid", flush=True)
     plugin = setup_groovylint_tool_plugin()
     if not plugin.command_exists("npm-groovy-lint"):
         pytest.skip("Missing groovylint executable.")
@@ -80,15 +80,14 @@ def test_groovylint_tool_plugin_scan_valid():
         os.path.join(os.path.dirname(__file__), "valid_package", "test.gradle"),
         os.path.join(os.path.dirname(__file__), "valid_package", "test.groovy"),
     ]
-    sys.stderr.write("Before scan\n")
     issues = plugin.scan(package, "level")
-    sys.stderr.write("After scan\n")
     assert not issues
 
 
 @pytest.mark.skip()
 def test_groovylint_tool_plugin_scan_valid_with_issues():
     """Integration test: Make sure the groovylint output hasn't changed."""
+    print("Starting plugin_scan_valid_with_issues", flush=True)
     plugin = setup_groovylint_tool_plugin()
     if not plugin.command_exists("npm-groovy-lint"):
         pytest.skip("Missing groovylint executable.")
