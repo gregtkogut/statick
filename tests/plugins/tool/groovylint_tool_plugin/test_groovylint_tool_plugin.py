@@ -2,10 +2,10 @@
 import argparse
 import os
 import subprocess
+import sys
 
 import mock
 import pytest
-import sys
 from yapsy.PluginManager import PluginManager
 
 import statick_tool
