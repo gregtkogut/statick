@@ -70,24 +70,24 @@ def test_groovylint_tool_plugin_scan_valid():
     """Integration test: Make sure the groovylint output hasn't changed."""
     print("Starting plugin_scan_valid", flush=True)
     plugin = setup_groovylint_tool_plugin()
-    print("Starting plugin_scan_valid", flush=True)
+    print("Starting plugin_scan_validA", flush=True)
     if not plugin.command_exists("npm-groovy-lint"):
-        print("Starting plugin_scan_valid", flush=True)
+        print("Starting plugin_scan_validB", flush=True)
         pytest.skip("Missing groovylint executable.")
-    print("Starting plugin_scan_valid", flush=True)
+    print("Starting plugin_scan_validC", flush=True)
     package = Package(
         "valid_package", os.path.join(os.path.dirname(__file__), "valid_package")
     )
-    print("Starting plugin_scan_valid", flush=True)
+    print("Starting plugin_scan_validD", flush=True)
 
     package["groovy_src"] = [
         os.path.join(os.path.dirname(__file__), "valid_package", "Jenkinsfile"),
         os.path.join(os.path.dirname(__file__), "valid_package", "test.gradle"),
         os.path.join(os.path.dirname(__file__), "valid_package", "test.groovy"),
     ]
-    print("Starting plugin_scan_valid", flush=True)
+    print("Starting plugin_scan_validE", flush=True)
     issues = plugin.scan(package, "level")
-    print("Starting plugin_scan_valid", flush=True)
+    print("Starting plugin_scan_validF", flush=True)
     assert not issues
 
 
