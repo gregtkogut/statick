@@ -3,7 +3,6 @@ import argparse
 import logging
 import os
 import shlex
-import sys
 from typing import Any, Dict, List, Optional, Union
 
 from yapsy.IPlugin import IPlugin
