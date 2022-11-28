@@ -109,6 +109,11 @@ jobs:
           sudo npm install -g npm-groovy-lint
           rm nodesource_setup.sh
 
+      - name: Install groovy
+        if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo npm install -g npm-groovy-lint
+
       # - name: Test with mypy
       #   run: |
       #     mypy --ignore-missing-imports --strict statick statick_tool/
