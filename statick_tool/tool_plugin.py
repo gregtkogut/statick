@@ -99,7 +99,6 @@ class ToolPlugin(IPlugin):  # type: ignore
 
         return []
 
-
     def process_files(
         self, package: Package, level: str, files: List[str], user_flags: List[str]
     ) -> Optional[List[str]]:
