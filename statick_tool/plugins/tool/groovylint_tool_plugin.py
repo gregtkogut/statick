@@ -55,6 +55,7 @@ class GroovyLintToolPlugin(ToolPlugin):
 
         for src in files:
             try:
+                print("Derp5.1", flush=True)
                 exe = [tool_bin] + flags + ["-f", src]
                 output = subprocess.check_output(
                     exe,
@@ -62,10 +63,12 @@ class GroovyLintToolPlugin(ToolPlugin):
                     universal_newlines=True,
                     cwd=package.path,
                 )
+                print("Derp5.2", flush=True)
                 total_output.append(output)
-
+                print("Derp5.3", flush=True)
             except subprocess.CalledProcessError as ex:
                 # npm-groovy-lint returns 1 on some errors but still has valid output
+                print("Derp5.4", flush=True)
                 if ex.returncode == 1:
                     total_output.append(ex.output)
                 else:
@@ -76,6 +79,7 @@ class GroovyLintToolPlugin(ToolPlugin):
                     return None
 
             except OSError as ex:
+                print("Derp5.5", flush=True)
                 logging.warning("Couldn't find %s! (%s)", tool_bin, ex)
                 return None
         print("Derp6", flush=True)
