@@ -26,51 +26,51 @@ class GroovyLintToolPlugin(ToolPlugin):
         self, package: Package, level: str, files: List[str], user_flags: List[str]
     ) -> Optional[List[str]]:
         """Run tool and gather output."""
-        print("Derp", flush=True)
+        print("test", flush=True)
         tool_bin = "npm-groovy-lint"
-        print("Derp1", flush=True)
+        print("test1", flush=True)
 
         tool_config = ".groovylintrc.json"
         if self.plugin_context:
             user_config = self.plugin_context.config.get_tool_config(
                 self.get_name(), level, "config"
             )
-        print("Derp2", flush=True)
+        print("test2", flush=True)
 
         if user_config is not None:
             tool_config = user_config
         if self.plugin_context:
             format_file_name = self.plugin_context.resources.get_file(tool_config)
-        print("Derp3", flush=True)
+        print("test3", flush=True)
 
         flags: List[str] = []
         if format_file_name is not None:
             flags += ["--config", format_file_name]
         flags += ["--output", "json"]
         flags += user_flags
-        print("Derp4", flush=True)
+        print("test4", flush=True)
 
         total_output: List[str] = []
-        print("Derp5", flush=True)
+        print("test5", flush=True)
 
         for src in files:
             try:
-                print(f"Derp5.1 {src}", flush=True)
+                print(f"test5.1 {src}", flush=True)
                 exe = [tool_bin] + flags + [src]
                 # exe = [tool_bin] + ["-h"]
-                print(f"Derp5.11 {exe}", flush=True)
+                print(f"test5.11 {exe}", flush=True)
                 output = subprocess.check_output(
                     exe,
                     stderr=subprocess.STDOUT,
                     universal_newlines=True,
                     cwd=package.path,
                 )
-                print(f"Derp5.2 {output}", flush=True)
+                print(f"test5.2 {output}", flush=True)
                 total_output.append(output)
-                print("Derp5.3", flush=True)
+                print("test5.3", flush=True)
             except subprocess.CalledProcessError as ex:
                 # npm-groovy-lint returns 1 on some errors but still has valid output
-                print(f"Derp5.4 {ex.output}", flush=True)
+                print(f"test5.4 {ex.output}", flush=True)
                 if ex.returncode == 1:
                     total_output.append(ex.output)
                 else:
@@ -81,14 +81,14 @@ class GroovyLintToolPlugin(ToolPlugin):
                     return None
 
             except OSError as ex:
-                print("Derp5.5", flush=True)
+                print("test5.5", flush=True)
                 logging.warning("Couldn't find %s! (%s)", tool_bin, ex)
                 return None
-        print("Derp6", flush=True)
+        print("test6", flush=True)
 
         for output in total_output:
             logging.debug("%s", output)
-        print("Derp7", flush=True)
+        print("test7", flush=True)
 
         return total_output
 
