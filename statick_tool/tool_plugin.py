@@ -69,6 +69,17 @@ class ToolPlugin(IPlugin):  # type: ignore
     def scan2(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
         print("2scanA")
+        files: List[str] = []
+        print("2scanB")
+
+        for file_type in self.get_file_types():
+            print("2scanC")
+            if file_type in package and package[file_type]:
+                files += package[file_type]
+                print("2scanD")
+
+        print("2scanE")
+
         return []
 
     def process_files(
