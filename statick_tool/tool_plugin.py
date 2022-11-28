@@ -78,7 +78,7 @@ class ToolPlugin(IPlugin):  # type: ignore
                 files += package[file_type]
                 print("2scanD")
 
-        print("2scanE")
+        print(f"2scanE {level}")
 
         return []
 
