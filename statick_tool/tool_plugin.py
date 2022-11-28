@@ -36,33 +36,33 @@ class ToolPlugin(IPlugin):  # type: ignore
     def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
         print("scanA")
-        files: List[str] = []
-        print("scanB")
+        # files: List[str] = []
+        # print("scanB")
 
-        for file_type in self.get_file_types():
-            print("scanC")
-            if file_type in package and package[file_type]:
-                files += package[file_type]
-                print("scanD")
+        # for file_type in self.get_file_types():
+        #     print("scanC")
+        #     if file_type in package and package[file_type]:
+        #         files += package[file_type]
+        #         print("scanD")
 
-        print("scanE")
+        # print("scanE")
 
-        if files:
-            print("scanF")
-            total_output = (  # pylint: disable=assignment-from-no-return
-                self.process_files(package, level, files, self.get_user_flags(level))
-            )
-            print("scanG")
-            if total_output is not None:
-                if self.plugin_context and self.plugin_context.args.output_directory:
-                    print("scanH")
-                    with open(self.get_name() + ".log", "w", encoding="utf8") as fid:
-                        for output in total_output:
-                            fid.write(output)
-                print("scanI")
-                return self.parse_output(total_output, package)
+        # if files:
+        #     print("scanF")
+        #     total_output = (  # pylint: disable=assignment-from-no-return
+        #         self.process_files(package, level, files, self.get_user_flags(level))
+        #     )
+        #     print("scanG")
+        #     if total_output is not None:
+        #         if self.plugin_context and self.plugin_context.args.output_directory:
+        #             print("scanH")
+        #             with open(self.get_name() + ".log", "w", encoding="utf8") as fid:
+        #                 for output in total_output:
+        #                     fid.write(output)
+        #         print("scanI")
+        #         return self.parse_output(total_output, package)
 
-            return None
+        #     return None
 
         return []
 
