@@ -46,8 +46,8 @@ class GroovyLintToolPlugin(ToolPlugin):
         flags: List[str] = []
         # if format_file_name is not None:
         #     flags += ["--config", format_file_name]
-        flags += ["--output", "json"]
-        flags += user_flags
+        # flags += ["--output", "json"]
+        # flags += user_flags
         print("test4", flush=True)
 
         total_output: List[str] = []
