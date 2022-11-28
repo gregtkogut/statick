@@ -57,6 +57,7 @@ class GroovyLintToolPlugin(ToolPlugin):
             try:
                 print("Derp5.1", flush=True)
                 exe = [tool_bin] + flags + ["-f", src]
+                print(f"Derp5.11 {exe}", flush=True)
                 output = subprocess.check_output(
                     exe,
                     stderr=subprocess.STDOUT,
