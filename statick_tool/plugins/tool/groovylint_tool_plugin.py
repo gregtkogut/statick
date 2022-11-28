@@ -56,8 +56,8 @@ class GroovyLintToolPlugin(ToolPlugin):
         for src in files:
             try:
                 print(f"Derp5.1 {src}", flush=True)
-                # exe = [tool_bin] + flags + ["-f", src]
-                exe = [tool_bin] + ["-h"]
+                exe = [tool_bin] + flags + [src]
+                # exe = [tool_bin] + ["-h"]
                 print(f"Derp5.11 {exe}", flush=True)
                 output = subprocess.check_output(
                     exe,
