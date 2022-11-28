@@ -33,38 +33,72 @@ class ToolPlugin(IPlugin):  # type: ignore
     def get_file_types(self) -> List[str]:  # type: ignore[empty-body]
         """Return a list of file types the plugin can scan."""
 
-    def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
+    def scan2(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
         print("scanA")
-        # files: List[str] = []
-        # print("scanB")
+        files: List[str] = []
+        print("scanB")
 
-        # for file_type in self.get_file_types():
-        #     print("scanC")
-        #     if file_type in package and package[file_type]:
-        #         files += package[file_type]
-        #         print("scanD")
+        for file_type in self.get_file_types():
+            print("scanC")
+            if file_type in package and package[file_type]:
+                files += package[file_type]
+                print("scanD")
 
-        # print("scanE")
+        print("scanE")
 
-        # if files:
-        #     print("scanF")
-        #     total_output = (  # pylint: disable=assignment-from-no-return
-        #         self.process_files(package, level, files, self.get_user_flags(level))
-        #     )
-        #     print("scanG")
-        #     if total_output is not None:
-        #         if self.plugin_context and self.plugin_context.args.output_directory:
-        #             print("scanH")
-        #             with open(self.get_name() + ".log", "w", encoding="utf8") as fid:
-        #                 for output in total_output:
-        #                     fid.write(output)
-        #         print("scanI")
-        #         return self.parse_output(total_output, package)
+        if files:
+            print("scanF")
+            total_output = (  # pylint: disable=assignment-from-no-return
+                self.process_files(package, level, files, self.get_user_flags(level))
+            )
+            print("scanG")
+            if total_output is not None:
+                if self.plugin_context and self.plugin_context.args.output_directory:
+                    print("scanH")
+                    with open(self.get_name() + ".log", "w", encoding="utf8") as fid:
+                        for output in total_output:
+                            fid.write(output)
+                print("scanI")
+                return self.parse_output(total_output, package)
 
-        #     return None
+            return None
 
         return []
+
+    def scan2(self, package: Package, level: str) -> Optional[List[Issue]]:
+        """Run tool and gather output."""
+        print("2scanA")
+        files: List[str] = []
+        print("2scanB")
+
+        for file_type in self.get_file_types():
+            print("2scanC")
+            if file_type in package and package[file_type]:
+                files += package[file_type]
+                print("2scanD")
+
+        print("2scanE")
+
+        if files:
+            print("2scanF")
+            total_output = (  # pylint: disable=assignment-from-no-return
+                self.process_files(package, level, files, self.get_user_flags(level))
+            )
+            print("2scanG")
+            if total_output is not None:
+                if self.plugin_context and self.plugin_context.args.output_directory:
+                    print("2scanH")
+                    with open(self.get_name() + ".log", "w", encoding="utf8") as fid:
+                        for output in total_output:
+                            fid.write(output)
+                print("2scanI")
+                return self.parse_output(total_output, package)
+
+            return None
+
+        return []
+
 
     def process_files(
         self, package: Package, level: str, files: List[str], user_flags: List[str]
