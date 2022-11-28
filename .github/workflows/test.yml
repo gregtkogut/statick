@@ -54,6 +54,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade -r requirements.txt
           python -m pip install --upgrade mypy
+          python -m pip install --upgrade pytest
           python -m pip install --upgrade setuptools
           python -m pip install --upgrade tox
           python -m pip install --upgrade tox-gh-actions
@@ -95,19 +96,19 @@ jobs:
       #     sudo apt-get install clang-tidy-14
 
       # # Have to install newer version from non-apt source due to SSL library compatibility issues.
-      - name: Install node
-        if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
-        run: |
-          sudo apt-get update
-          sudo apt-get install curl
-          curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
-          sudo bash nodesource_setup.sh
-          sudo apt-get install -y --no-install-recommends nodejs
-          sudo npm install -g n
-          sudo n stable
-          sudo npm install -g markdownlint-cli@0.21.0
-          sudo npm install -g npm-groovy-lint@10.1.0
-          rm nodesource_setup.sh
+      # - name: Install node
+      #   if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install curl
+      #     curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+      #     sudo bash nodesource_setup.sh
+      #     sudo apt-get install -y --no-install-recommends nodejs
+      #     sudo npm install -g n
+      #     sudo n stable
+      #     sudo npm install -g markdownlint-cli@0.21.0
+      #     sudo npm install -g npm-groovy-lint@10.1.0
+      #     rm nodesource_setup.sh
 
       # - name: Test with mypy
       #   run: |
