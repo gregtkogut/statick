@@ -33,7 +33,7 @@ class ToolPlugin(IPlugin):  # type: ignore
     def get_file_types(self) -> List[str]:  # type: ignore[empty-body]
         """Return a list of file types the plugin can scan."""
 
-    def scan2(self, package: Package, level: str) -> Optional[List[Issue]]:
+    def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
         print("scanA")
         files: List[str] = []
