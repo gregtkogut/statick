@@ -125,13 +125,13 @@ jobs:
       #   with:
       #     docs-folder: 'docs/'
 
-      # - name: Test with tox
-      #   run: |
-      #     python -m tox
-
-      - name: Debug pytest
+      - name: Test with tox
         run: |
-          python3 -m pytest tests/plugins/tool/groovylint_tool_plugin/test_groovylint_tool_plugin.py
+          python -m tox
+
+      # - name: Debug pytest
+      #   run: |
+      #     python3 -m pytest tests/plugins/tool/groovylint_tool_plugin/test_groovylint_tool_plugin.py
 
       # - name: Upload coverage to Codecov
       #   uses: codecov/codecov-action@v2
