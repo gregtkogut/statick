@@ -26,7 +26,7 @@ class GroovyLintToolPlugin(ToolPlugin):
         self, package: Package, level: str, files: List[str], user_flags: List[str]
     ) -> Optional[List[str]]:
         """Run tool and gather output."""
-        print("Derp")
+        print("Derp", flush=True)
         tool_bin = "npm-groovy-lint"
         print("Derp1")
 

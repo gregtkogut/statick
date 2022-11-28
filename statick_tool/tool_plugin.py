@@ -81,7 +81,7 @@ class ToolPlugin(IPlugin):  # type: ignore
         print(f"2scanE {level}")
 
         if files:
-            print("2scanF")
+            print("2scanF", flush=True)
             total_output = (  # pylint: disable=assignment-from-no-return
                 self.process_files(package, level, files, self.get_user_flags(level))
             )
