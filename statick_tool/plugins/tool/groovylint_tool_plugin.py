@@ -26,25 +26,32 @@ class GroovyLintToolPlugin(ToolPlugin):
         self, package: Package, level: str, files: List[str], user_flags: List[str]
     ) -> Optional[List[str]]:
         """Run tool and gather output."""
+        print("Derp")
         tool_bin = "npm-groovy-lint"
+        print("Derp1")
 
         tool_config = ".groovylintrc.json"
         if self.plugin_context:
             user_config = self.plugin_context.config.get_tool_config(
                 self.get_name(), level, "config"
             )
+        print("Derp2")
+
         if user_config is not None:
             tool_config = user_config
         if self.plugin_context:
             format_file_name = self.plugin_context.resources.get_file(tool_config)
+        print("Derp3")
 
         flags: List[str] = []
         if format_file_name is not None:
             flags += ["--config", format_file_name]
         flags += ["--output", "json"]
         flags += user_flags
+        print("Derp4")
 
         total_output: List[str] = []
+        print("Derp5")
 
         for src in files:
             try:
@@ -71,9 +78,11 @@ class GroovyLintToolPlugin(ToolPlugin):
             except OSError as ex:
                 logging.warning("Couldn't find %s! (%s)", tool_bin, ex)
                 return None
+        print("Derp6")
 
         for output in total_output:
             logging.debug("%s", output)
+        print("Derp7")
 
         return total_output
 

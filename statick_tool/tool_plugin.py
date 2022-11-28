@@ -82,9 +82,9 @@ class ToolPlugin(IPlugin):  # type: ignore
 
         if files:
             print("2scanF")
-            # total_output = (  # pylint: disable=assignment-from-no-return
-            #     self.process_files(package, level, files, self.get_user_flags(level))
-            # )
+            total_output = (  # pylint: disable=assignment-from-no-return
+                self.process_files(package, level, files, self.get_user_flags(level))
+            )
             print("2scanG")
             total_output = None
             if total_output is not None:
