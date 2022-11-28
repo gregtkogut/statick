@@ -56,7 +56,8 @@ class GroovyLintToolPlugin(ToolPlugin):
         for src in files:
             try:
                 print("Derp5.1", flush=True)
-                exe = [tool_bin] + flags + ["-f", src]
+                #exe = [tool_bin] + flags + ["-f", src]
+                exe = [tool_bin]
                 print(f"Derp5.11 {exe}", flush=True)
                 output = subprocess.check_output(
                     exe,
@@ -64,7 +65,7 @@ class GroovyLintToolPlugin(ToolPlugin):
                     universal_newlines=True,
                     cwd=package.path,
                 )
-                print("Derp5.2", flush=True)
+                print(f"Derp5.2 {output}", flush=True)
                 total_output.append(output)
                 print("Derp5.3", flush=True)
             except subprocess.CalledProcessError as ex:
