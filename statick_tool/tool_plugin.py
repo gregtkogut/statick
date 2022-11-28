@@ -86,6 +86,7 @@ class ToolPlugin(IPlugin):  # type: ignore
             #     self.process_files(package, level, files, self.get_user_flags(level))
             # )
             print("2scanG")
+            total_output = None
             if total_output is not None:
                 # if self.plugin_context and self.plugin_context.args.output_directory:
                 #     print("2scanH")
